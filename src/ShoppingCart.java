@@ -27,9 +27,20 @@ public class ShoppingCart {
         return this.cart;
     }
 
+    public boolean isCartFull()
+    {
+        if (cart.size() > 10){
+            System.out.println("A cart can only hold up to ten items.");
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
 
         ShoppingCart sc = new ShoppingCart();
-        System.out.println(sc.getTimeCartWasCreated());
+        System.out.println(sc.getTimeCartWasCreated()); // yay, timestamp works!
     }
 }
