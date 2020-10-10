@@ -1,4 +1,5 @@
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 
@@ -17,6 +18,11 @@ public class Customer {
         this.customerCard = newCard;
     }
 
+    public void printInfo() {
+        System.out.println("==========================\n| NAME - "+getFullName()+"\n| DOB - "+
+                getDateOfBirth()+ "\n| PAN - "+ getPan() +"\n==========================");
+    }
+
     public String getFullName() {
         return this.fullName;
     }
@@ -29,8 +35,24 @@ public class Customer {
         return this.customerCard;
     }
 
+    public String getPan() {
+        return this.getCustomerCard().getMaskedPan();
+    }
+
     private void activateCard() {
-        this.customerCard.activateCard();
+        this.getCustomerCard().activateCard();
+    }
+
+    private void toggleCard() {
+        this.getCustomerCard().toggleCard();
+    }
+
+    private void isMyCardEnabled() {
+        if (this.getCustomerCard().isCardEnabled()){
+            System.out.println("Your card is ENABLED");
+        } else {
+            System.out.println("Your card is DISABLED");
+        }
     }
 
     public static void main(String[] args) {
@@ -40,9 +62,13 @@ public class Customer {
         Customer bob = new Customer("Bobby Joe","10/09/1999",c1);
         Customer kat = new Customer("Kathy Joe","23/02/1997",c2);
 
-        System.out.println(bob.getCustomerCard().isCardActive());
-        bob.activateCard();
-        System.out.println(bob.getCustomerCard().isCardActive());
-        System.out.println(kat.getCustomerCard().isCardActive());
+        bob.printInfo();
+        bob.isMyCardEnabled();
+        bob.toggleCard();
+        bob.isMyCardEnabled();
+        bob.toggleCard();
+        bob.isMyCardEnabled();
+        bob.toggleCard();
+        bob.isMyCardEnabled();
     }
 }

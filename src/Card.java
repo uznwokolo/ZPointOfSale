@@ -15,32 +15,36 @@ public class Card {
         {
             this.cardNumber = cNum;
             this.secret = key;
-            System.out.println("A card has been created.");
+            //System.out.println("A card has been created.");
         }
         else {
             System.out.println("Card was not created. Reason: Invalid values.");
         }
     }
 
-    public boolean isCardActive()
+    protected boolean isCardEnabled()
     {
         return this.isActive;
+    }
+
+    protected void toggleCard() {
+        isActive = !isActive;
     }
 
     private char[] getFullPan(){
         return this.cardNumber;
     }
 
-    public char[] getMaskedPan()
+    protected String getMaskedPan()
     {
-        char[] masked = cardNumber.clone();   // clone the actual card number
-        for (int i = 4; i < 12; i++){
-            masked[i] = '*';
+        char[] masked = getFullPan().clone();   // clone the actual card number
+        for (int i = 4; i < 12; i++){         // mask the middle 8
+            masked[i] = '*';                  // digits with '*'
         }
-        return masked;
+        return new String(masked);            // return a string
     }
 
-    public void activateCard()
+    protected void activateCard()
     {
         this.isActive = true;
     }
