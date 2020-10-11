@@ -9,6 +9,8 @@ public class Customer {
     private String dateOfBirth;
     private Card customerCard;
 
+    private ShoppingCart mycart;
+
     public Customer(){ }
 
     public Customer(String name, String dob, Card newCard)
@@ -16,6 +18,8 @@ public class Customer {
         this.fullName = name;
         this.dateOfBirth = dob;
         this.customerCard = newCard;
+
+        mycart = new ShoppingCart();
     }
 
     public void printInfo() {
