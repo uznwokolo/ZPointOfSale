@@ -59,6 +59,10 @@ public class Customer {
         }
     }
 
+    private void setCardAddress(String s) {
+        this.getCustomerCard().setBillingAddress(s);
+    }
+
     public static void main(String[] args) {
         Card c1 = new Card(new char[]{'3','4','3','4','5','9','8','9','0','7','0','1','4','9','2','8'}, 363);
         Card c2 = new Card(new char[]{'3','4','3','4','5','9','8','9','0','7','0','1','4','9','2','8'}, 839);
@@ -74,5 +78,7 @@ public class Customer {
         bob.isMyCardEnabled();
         bob.toggleCard();
         bob.isMyCardEnabled();
+
+        bob.setCardAddress("33445 Union Blvd, Montgomery, UT 34007");
     }
 }
